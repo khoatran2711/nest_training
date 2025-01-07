@@ -2,8 +2,8 @@ import { Injectable } from '@nestjs/common';
 
 @Injectable()
 export class AuthenticationService {
-  constructor() {}
-  login() {
+  login(data: any) {
+    console.log('login', data);
     return 'login';
   }
 }

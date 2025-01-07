@@ -1,11 +1,37 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { AuthenticationModule } from './modules/authentication/authentication.module';
-import { UserModule } from './modules/user/user.module';
+
+import { AdminModule } from './api/admin/admin.module';
+import { CustomerModule } from './api/customer/customer.module';
+import { CommonModule } from './api/common/common.module';
+import { RouterModule } from '@nestjs/core';
+import { RepositoriesModule } from './repositories/repositories.module';
+import { ServicesModule } from './services/services.module';
+import { ShcemasModule } from 'src/shcemas/shcemas.module';
 
 @Module({
-  imports: [AuthenticationModule, UserModule],
+  imports: [
+    AdminModule,
+    RouterModule.register([
+      {
+        path: 'admin',
+        module: AdminModule,
+      },
+    ]),
+    CustomerModule,
+    RouterModule.register([
+      {
+        path: 'customer',
+        module: CustomerModule,
+      },
+    ]),
+    CommonModule,
+    RouterModule.register([{ path: 'common', module: CommonModule }]),
+    RepositoriesModule,
+    ServicesModule,
+    ShcemasModule,
+  ],
   controllers: [AppController],
   providers: [AppService],
 })
