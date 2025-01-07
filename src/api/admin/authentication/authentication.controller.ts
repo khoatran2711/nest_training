@@ -9,8 +9,13 @@ export class AuthenticationController {
   login(@Body() data: any) {
     return this.authenticationService.login(data);
   }
-  @Post('register')
-  register(@Body() data: any) {
+  @Post('init')
+  init() {
+    const data = {
+      email: 'admin@gmail.com',
+      password: 'admin123',
+      userName: 'admin',
+    };
     return this.authenticationService.register(data);
   }
 }

@@ -8,7 +8,11 @@ export class AuthenticationService {
     console.log('login', data);
     return 'login';
   }
-  register(data: any) {
+  async register(data: any) {
+    const currentUser = await this.userRepository.findUserByEmail(data.email);
+    if (currentUser) {
+      return { status: 'error', message: 'User already exists' };
+    }
     this.userRepository.createUser(data);
     return { status: 'success', data: [] };
   }
