@@ -9,6 +9,7 @@ import { RouterModule } from '@nestjs/core';
 import { RepositoriesModule } from './repositories/repositories.module';
 import { ServicesModule } from './services/services.module';
 import { ShcemasModule } from 'src/shcemas/shcemas.module';
+import { DatabaseModule } from './database/database.module';
 
 @Module({
   imports: [
@@ -31,6 +32,7 @@ import { ShcemasModule } from 'src/shcemas/shcemas.module';
     RepositoriesModule,
     ServicesModule,
     ShcemasModule,
+    DatabaseModule,
   ],
   controllers: [AppController],
   providers: [AppService],

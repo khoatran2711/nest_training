@@ -9,4 +9,8 @@ export class AuthenticationController {
   login(@Body() data: any) {
     return this.authenticationService.login(data);
   }
+  @Post('register')
+  register(@Body() data: any) {
+    return this.authenticationService.register(data);
+  }
 }
